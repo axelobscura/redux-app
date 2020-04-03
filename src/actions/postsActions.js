@@ -19,11 +19,9 @@ export const getPostsFailure = () => ({
 export function fetchPosts(){
     return async dispatch => {
         dispatch(getPosts())
-
         try{
             const response = await fetch('https://jsonplaceholder.typicode.com/posts');
             const data = await response.json()
-
             dispatch(getPostsSuccess(data))
         }catch(error){
             dispatch(getPostsFailure())
